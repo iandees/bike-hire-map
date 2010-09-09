@@ -1,0 +1,66 @@
+body { background-color: #DDDDDD; }
+* {font-family: verdana, sans-serif; font-size: 13px; }
+#optionwrapper { position: absolute; top: 0; left: 53px; right: 0; background-color: #000; padding: 10px; opacity: 0.70; color: white; filter:alpha(opacity=70); } 
+#optionbox { }
+#optionbox a, #optionbox a:visited, #statsbox a, #statsbox a:visited { color: #ccf; }
+#optionbox a:hover, #statsbox a:hover { color: #f00; }
+#infobox { position: absolute; left: 0; bottom: 0; background-color: #000; padding: 0 10px; opacity: 0.70; color: white; display: none; filter:alpha(opacity=70); }
+#infobox a, #optionbox a:visited { color: #ccf; }
+#infoboxgraph { width: 300px; height: 135px; padding-top: 10px; padding-bottom: 10px;}
+#statsbox { position: absolute; bottom: 0; right: 0; background-color: #000; padding: 10px; opacity: 0.70; color: white; filter:alpha(opacity=70); }
+
+#balancegraph { padding: 10px 0; display: none; }
+#overallgraph { padding: 10px 0; display: none; }
+#historicstats { font-size: 9px; }
+#keyinfo { font-size: 9px; padding: 10px 0 2px 0; text-align: center; }
+#refreshstatus { font-size: 9px; }
+#timeTillNext { font-size: 9px; }
+#theme { font-size: 9px; }
+.showhide, .showhide a { font-size: 9px; }
+.showhide { padding-top: 5px; float: right; }
+.showhidecap { font-size: 9px; }
+#logo { float: left; width: 62px; height: 57px; margin-right: 10px; }
+#logo a img {  border: 0px solid #000000; }
+#title, #title b { font-size: 24px; }
+#keywrapper { float: right; }
+#keywrapper td { padding: 0; vertical-align: middle; }
+#keywrapper table { padding: 0px; }
+#themecell { font-size: 9px; }
+#rampcell { width: 250px; }
+#keyTable, #keyTable tr, #keyTable td { border-width: 0; padding: 0; margin: 0; }
+#refreshwrapper {  }
+#linkswrapper, #linkswrapper a { font-size: 9px; }
+
+a:visited { color: #00f; }
+table, tr, td { border-width: 0; padding: 3px; margin: 0; }
+.caption { font-size: 11px; padding-left: 5px; }
+.smalltext { font-size: 11px; }
+.keyBox { width: 60px; height: 60px; background-color: #CCCCCC; }
+.statuspanel { float: left; width: 100px; font-weight: bold; text-align: center; font-size: 9px; padding: 2px 0 5px 0; }
+
+#tickerbox 
+{ 
+	position: absolute; 
+	width: 600px; 
+	bottom: 0; 
+	left: 50%; 
+	margin-left: -300px; 
+	background-color: #000; 
+	overflow: hidden; 
+	opacity: 0.70; 
+	filter:alpha(opacity=70);
+	display: none;
+} 
+.tickeritem {
+	height: 15px; padding: 0 0 0 3px; position: absolute; color: #fff; 
+} 
+
+.tickeritemtext { font-size: 10px; }
+.tickercursorwrapper {
+	display: none;
+}
+.tickercursor
+{
+	color: #fff;
+	font-size: 10px;
+}
