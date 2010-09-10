@@ -38,8 +38,18 @@ colours.push(["Bike Finder", ['FF0000', '880000', '000044', 'FF0000'], ['110000'
 colours.push(["Space Finder", ['00FF00', '000000', '008800', 'FF0000'], ['000000', '002200', '004400', '006600', '008800', '009900', '00BB00', '00DD00', '00FF00'], [0, 0, 0], [0, 1, 0], [0, 0, 0], 2]);
 
 var styleMap = new OpenLayers.StyleMap(
-	{"default": new OpenLayers.Style({pointRadius: "${radius}", fillColor: "${fillColor}", fillOpacity: "${fillOpacity}", strokeColor: "${strokeColor}", strokeWidth: "${strokeWidth}" }),
-	 "select": new OpenLayers.Style({strokeColor: "#000000", strokeOpacity: 1.0, strokeWidth: 4 })}
+	{"default": new OpenLayers.Style({
+      pointRadius: "${radius}",
+      fillColor: "${fillColor}",
+      fillOpacity: "${fillOpacity}",
+      strokeColor: "${strokeColor}",
+      strokeWidth: "${strokeWidth}",
+      label: "${label}",
+      fontSize: "${fontSize}"}),
+	 "select": new OpenLayers.Style({
+      strokeColor: "#000000",
+      strokeOpacity: 1.0,
+      strokeWidth: 4})}
 );
 			
 var lookupCore = {};
@@ -683,6 +693,12 @@ function updateCircleSizesAndKeys()
 			}
 		}
 	
+    feature.attributes.label = "";
+    if (map.getZoom() > 14)
+    {
+    feature.attributes.label = feature.bikes + "/" + feature.spaces;
+    feature.attributes.fontSize = "20%";
+    }
 		feature.attributes.radius = pointRadius;
 		feature.attributes.fillOpacity = 0.6;
 		feature.attributes.strokeOpacity = 0.75;
