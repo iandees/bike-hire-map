@@ -25,7 +25,7 @@ var context = function(feature)
 	return feature;
 }
 
-//Graph colour, full highlight, empty highlight
+//Graph colour, full highlight, empty highlight, locked highlight
 var cNum = 0;
 var colours = new Array(); 
 
@@ -519,6 +519,12 @@ function refreshStatBox()
 		var html = "";
 		html += "Bikes: " + currentSelectedFeature.bikes + "<br />";
 		html += "Spaces: " + currentSelectedFeature.spaces + "<br />";
+
+    if (currentSelectedFeature.locked === "true")
+    {
+      html += "<div style='background-color:#a22;border:1px solid red;'><strong>This station is locked.</strong><br />";
+      html += "<span style='font-size:xx-small;'>Locked stations temporarily block rentals but allow returns.</span><br /></div>";
+    }
 	
 		document.getElementById('infobox').style.display = "block";
 		document.getElementById('infoboxbottom').innerHTML = html;
@@ -546,6 +552,7 @@ function initialFeatureSetup()
     var nameCleaned = stations[i][2].replace(/\s*$/, '').replace(/\s\,/, '\,');
     feature.name = nameCleaned;
     feature.available = stations[i][8] == "false" && stations[i][7] == "true";
+    feature.locked = stations[i][8];
     features.push(feature);
   }
 
@@ -574,6 +581,7 @@ function updateFeatures()
 					feature.spaces_previous = feature.spaces;
 					feature.bikes_previous = feature.bikes;
 				}
+    feature.locked = stations[i][8];
 				feature.spaces = stations[j][6];
                 		feature.bikes = stations[j][5];
                 		feature.total = feature.spaces + feature.bikes;
@@ -634,6 +642,11 @@ function updateCartoOnFeatures()
 		{
 			feature.edge = "";
 		}
+
+    if (feature.locked === "true")
+    {
+      feature.edge = "locked";
+    }
 
 	}
 
@@ -714,7 +727,7 @@ function updateCircleSizesAndKeys()
 		}
     else if (feature.edge == "locked")
     {
-      feature.attributes.strokeWidth = 1;
+      feature.attributes.strokeWidth = 2;
       feature.attributes.strokeColor = "#" + colours[cNum][1][3];
     }
 		else
