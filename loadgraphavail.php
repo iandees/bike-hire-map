@@ -8,15 +8,17 @@ if(isset($_GET['tfl_id']) && !is_numeric($_GET['tfl_id'])) {
 $station_id = mysql_real_escape_string($_GET['tfl_id']);
 if($station_id != FALSE) {
   // Querying for a particular station id
-  $q = mysql_query("SELECT * FROM niceride_historical WHERE station_id=$station_id");
+  $q = mysql_query("SELECT *
+                    FROM niceride_historical
+                    WHERE station_id=$station_id
+                      AND TIME > TIMESTAMPADD( DAY, -1, NOW( ) )");
   $err = mysql_error();
 } else {
   // Querying for overall system data
   $q = mysql_query("SELECT SUM( bikes ) AS bikes, SUM( slots ) AS slots, DATE_FORMAT( TIME,  '%Y-%m-%d %H:%i' ) AS time
                     FROM niceride_historical
                     GROUP BY DATE_FORMAT( TIME,  '%Y-%m-%d %H:%i' ) 
-                    HAVING TIME > TIMESTAMPADD( 
-                    DAY , -1, NOW( ) )");
+                    HAVING TIME > TIMESTAMPADD( DAY , -1, NOW( ) )");
   $err = mysql_error();
 
 }
